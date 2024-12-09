@@ -40,36 +40,37 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Login'),
       ),
-      body: Center(
-          child: Column(
-            children: [
-              isLoading
-                  ? const CircularProgressIndicator()
-                  : LoginButton(
-                color: Colors.deepPurple,
-                text: 'Sign in Anonymously',
-                loginMethod: handleSignInAnonymously,
-                icon: FontAwesomeIcons.userNinja,
-              ),
-              isLoading
-                  ? const CircularProgressIndicator()
-                  : LoginButton(
-                color: Colors.blue,
-                text: 'Sign in with Google',
-                loginMethod: handleSignInWithGoogle,
-                icon: FontAwesomeIcons.google,
-              ),
-            ],
-          )
-
-
+      body: Stack(
+        children: [
+          Center(
+            child: Column(
+              children: [
+                     LoginButton(
+                        color: Colors.deepPurple,
+                        text: 'Sign in Anonymously',
+                        loginMethod: handleSignInAnonymously,
+                        icon: FontAwesomeIcons.userNinja,
+                      ),
+                    LoginButton(
+                        color: Colors.blue,
+                        text: 'Sign in with Google',
+                        loginMethod: handleSignInWithGoogle,
+                        icon: FontAwesomeIcons.google,
+                      ),
+              ],
+            ),
+          ),
+          if (isLoading)
+            const Center(
+              child: CircularProgressIndicator(),
+            ),
+        ],
       ),
     );
   }

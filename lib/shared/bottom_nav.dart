@@ -25,7 +25,7 @@ class BottomNavBar extends StatelessWidget {
         Widget targetPage;
         switch (index) {
           case 0:
-            targetPage = const HomeScreen();
+            targetPage =  HomeScreen();
             break;
           case 1:
             targetPage = const CommunityScreen();
