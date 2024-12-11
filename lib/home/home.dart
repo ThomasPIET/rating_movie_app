@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../shared/bottom_nav.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -8,12 +7,43 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home'),
+      body: Column(
+        children: [
+          Container(
+            decoration:  BoxDecoration(
+              color: Theme.of(context).colorScheme.primary,
+            ),
+            height: 110,
+            child: Container(
+              padding: const EdgeInsets.only(top: 50, left: 10),
+              child: Row(
+                children: [
+                  SizedBox.fromSize(
+                    size: const Size(56, 56),
+                    child: ClipOval(
+                      child: Image.asset('assets/logo.png'),
+                    ),
+                  ),
+                  const Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'RateFlix',
+                        style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
-
       bottomNavigationBar: const BottomNavBar(currentIndex: 0),
     );
   }
 }
-
