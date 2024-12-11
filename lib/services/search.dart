@@ -3,7 +3,7 @@ import 'dart:convert';
 
 
 Future<List<dynamic>> sendQueryToBackend(String query) async {
-  final String backendUrl = 'https://rating-movie-app-back.fly.dev//search?query=$query';
+  final String backendUrl = 'https://rating-movie-app-back.fly.dev/search?query=$query'; // version déploy
   // final String backendUrl = 'http://10.0.2.2:3000/search?query=$query'; //  Si j'ai pas push la dernière version du back
 
   try {

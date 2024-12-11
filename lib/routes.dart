@@ -6,5 +6,5 @@ import 'login/login.dart';
 var routes = {
   '/': (context) => const AuthGuard(),
   '/login': (context) => const LoginScreen(),
-  '/home': (context) =>  HomeScreen(),
+  '/home': (context) => const HomeScreen(),
 };

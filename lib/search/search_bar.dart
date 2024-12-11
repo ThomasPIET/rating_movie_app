@@ -1,7 +1,6 @@
 import 'dart:async';
+
 import 'package:flutter/material.dart';
-
-
 
 class CustomSearchBar extends StatefulWidget {
   final Function(String) onSearch;
@@ -40,16 +39,33 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
     });
   }
 
-
   @override
   Widget build(BuildContext context) {
     return TextField(
       controller: _controller,
       onChanged: (text) => _onTextChanged(),
+      cursorColor: Colors.white,
       decoration: InputDecoration(
-        labelText: 'Search movies...',
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
+        labelText: 'Search movies',
+        prefixIcon: const Icon(Icons.search, color: Colors.white),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(15),
+          borderSide: const BorderSide(color: Colors.white),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(15),
+          borderSide: const BorderSide(color: Colors.white),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(15),
+          borderSide: const BorderSide(color: Colors.white),
+        ),
+        floatingLabelStyle: const TextStyle(color: Colors.white),
       ),
+      style: const TextStyle(color: Colors.white),
+
     );
+
+
   }
 }
