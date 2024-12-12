@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../model/movie_model.dart';
+import '../movie_details/movie_details.dart';
 import '../services/search.dart';
 import '../shared/bottom_nav.dart';
 import 'search_bar.dart';
@@ -13,19 +15,19 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> {
-  List<dynamic> _searchResults = [];
+  List<Movie> _movie = [];
 
   void _performSearch(String query) async {
     if (query.isEmpty) {
       setState(() {
-        _searchResults = [];
+        _movie = [];
       });
       return;
     }
     List<dynamic> results = await sendQueryToBackendSearch(query);
 
     setState(() {
-      _searchResults = results;
+      _movie = results.map((movie) => Movie.fromJson(movie)).toList();
     });
   }
 
@@ -82,7 +84,7 @@ class _SearchScreenState extends State<SearchScreen> {
             ),
           ),
           Expanded(
-            child: _searchResults.isEmpty
+            child: _movie.isEmpty
                 ? const Column(
                     // Removed the nested `Expanded`
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -98,32 +100,40 @@ class _SearchScreenState extends State<SearchScreen> {
                   )
                 : ListView.builder(
                     padding: EdgeInsets.zero,
-                    itemCount: _searchResults.length,
+                    itemCount: _movie.length,
                     itemBuilder: (context, index) {
-                      final movie = _searchResults[index];
+                      final movie = _movie[index];
                       return Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 8),
                         child: Container(
-                          padding: const EdgeInsets.symmetric(vertical: 5),
+                          padding: const EdgeInsets.symmetric(vertical: 15),
                           decoration: const BoxDecoration(
                             border: Border(
                               bottom: BorderSide(color: Colors.white70),
                             ),
                           ),
-                          child: IconButton(
-                            onPressed: () {},
-                            icon: Row(
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      MovieDetailsScreen(movie: movie),
+                                ),
+                              );
+                            },
+                            child: Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 SizedBox(
                                   width: 100,
                                   height: 150,
-                                  child: movie['poster_path'] != null
+                                  child: movie.posterPath.isNotEmpty
                                       ? ClipRRect(
                                           borderRadius:
                                               BorderRadius.circular(15),
                                           child: Image.network(
-                                            'https://image.tmdb.org/t/p/original${movie['poster_path']}',
+                                            'https://image.tmdb.org/t/p/original${movie.posterPath}',
                                             fit: BoxFit.fill,
                                             loadingBuilder: (context, child,
                                                 loadingProgress) {
@@ -154,7 +164,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        movie['title'] ?? 'Title not found',
+                                        movie.title,
                                         style: const TextStyle(
                                           fontSize: 18,
                                           fontWeight: FontWeight.bold,
@@ -162,8 +172,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                       ),
                                       const SizedBox(height: 8),
                                       Text(
-                                        movie['overview'] ??
-                                            'No description available.',
+                                        movie.overview,
                                         maxLines: 3,
                                         overflow: TextOverflow.ellipsis,
                                         style: TextStyle(

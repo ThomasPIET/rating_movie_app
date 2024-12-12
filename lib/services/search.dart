@@ -10,6 +10,7 @@ Future<List<dynamic>> sendQueryToBackendSearch(String query) async {
     final response = await http.get(Uri.parse(backendUrl));
     if (response.statusCode == 200) {
       List results = json.decode(response.body);
+      print('Results from backend: $results');
       return results;
     } else {
       print('Error: ${response.statusCode}');
