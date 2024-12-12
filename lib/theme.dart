@@ -5,5 +5,10 @@ var theme = ThemeData(
       primary: Color(0xFF222222),
       brightness: Brightness.dark,
   ),
+  iconButtonTheme: const IconButtonThemeData(
+    style: ButtonStyle(
+      splashFactory: NoSplash.splashFactory,
+    ),
+  ),
   useMaterial3: true,
 );

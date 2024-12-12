@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ratingmoviesapp/home/popular_container.dart';
 import '../shared/bottom_nav.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -41,6 +42,11 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
           ),
+          const Column(
+            children: [
+              PopularContainer()
+            ],
+          )
         ],
       ),
       bottomNavigationBar: const BottomNavBar(currentIndex: 0),
