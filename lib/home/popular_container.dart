@@ -44,7 +44,9 @@ class _PopularContainerState extends State<PopularContainer> {
             ),
             const Spacer(),
             TextButton.icon(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, '/all_popular');
+              },
               label: const Text(
                 'View All',
                 style: TextStyle(color: Colors.white70),
