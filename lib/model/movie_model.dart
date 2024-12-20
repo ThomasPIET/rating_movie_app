@@ -22,4 +22,14 @@ class Movie {
       voteAverage: json['vote_average'].toDouble(),
     );
   }
+  Map<String, dynamic> toJson() {
+    return {
+      'title': title,
+      'poster_path': posterPath,
+      'overview': overview,
+      'release_date': releaseDate,
+      'vote_average': voteAverage,
+    };
+  }
+
 }

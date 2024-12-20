@@ -23,7 +23,7 @@ class  AuthGuard extends StatelessWidget {
               child: Text('An error occurred'),
             );
           } else if (snapshot.hasData) {
-            return  HomeScreen();
+            return  const HomeScreen();
           }
           return const LoginScreen();
         });

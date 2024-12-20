@@ -55,7 +55,7 @@ class BottomNavBar extends StatelessWidget {
               targetPage = const SearchScreen();
               break;
             case 2:
-              targetPage = const ProfileScreen();
+              targetPage =   ProfileScreen();
               break;
             default:
               return;
