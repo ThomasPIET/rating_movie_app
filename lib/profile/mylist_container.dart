@@ -3,6 +3,8 @@ import 'package:ratingmoviesapp/model/movie_model.dart';
 
 
 import '../movie_details/movie_details.dart';
+import '../services/auth.dart';
+import '../services/mylist.dart';
 
 class MyListContainer extends StatefulWidget {
   const MyListContainer({super.key});
@@ -14,22 +16,19 @@ class MyListContainer extends StatefulWidget {
 class _MyListContainerState extends State<MyListContainer> {
   List<Movie> _movies = [];
 
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   _getMyListMovies();
-  // }
+@override
+  void initState() {
+    super.initState();
+    getFilmsForUser();
+  }
 
-  // void _getMyListMovies() async {
-  //   final user = AuthServices().user;
-  //   if (user != null) {
-  //     final movies = await MyListServices().getFilmsForUser(user.uid);
-  //     setState(() {
-  //       _movies = movies;
-  //     });
-  //   }
-  // }
-
+   void getFilmsForUser() async {
+    final userId = AuthServices().user!.uid;
+    final movies = await MyListServices().getFilmsForUser(userId);
+    setState(() {
+      _movies = movies;
+    });
+   }
 
 
   @override
@@ -69,7 +68,8 @@ class _MyListContainerState extends State<MyListContainer> {
                 )
               : ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemCount: 10,
+                  itemCount: _movies.length,
+                  // itemExtent: 10,
                   itemBuilder: (context, index) {
                     final movie = _movies[index];
                     return GestureDetector(
