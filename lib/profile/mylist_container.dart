@@ -36,28 +36,18 @@ class _MyListContainerState extends State<MyListContainer> {
     return Column(
       children: [
         const SizedBox(height: 10),
-        Row(
+        const Row(
           children: [
-            const SizedBox(width: 15),
-            const Text(
+            SizedBox(width: 20),
+            Text(
               'My List',
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const Spacer(),
-            TextButton.icon(
-              onPressed: () {
-                Navigator.pushNamed(context, '/all_popular');
-              },
-              label: const Text(
-                'View All',
-                style: TextStyle(color: Colors.white70),
-              ),
-              icon: const Icon(Icons.arrow_forward, color: Colors.white70),
-              iconAlignment: IconAlignment.end,
-            ),
+            Spacer(),
+           SizedBox(height: 50)
           ],
         ),
         SizedBox(

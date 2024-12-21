@@ -1,4 +1,5 @@
 class Movie {
+  final int id;
   final String title;
   final String overview;
   final String posterPath;
@@ -6,6 +7,7 @@ class Movie {
   final double voteAverage;
 
   Movie({
+    required this.id,
     required this.title,
     required this.overview,
     required this.posterPath,
@@ -15,6 +17,7 @@ class Movie {
 
   factory Movie.fromJson(Map<String, dynamic> json) {
     return Movie(
+      id: json['id'],
       title: json['title'] ?? 'Title not found',
       overview: json['overview'] ?? 'Overview not found',
       posterPath: json['poster_path'] ?? '',
@@ -24,6 +27,7 @@ class Movie {
   }
   Map<String, dynamic> toJson() {
     return {
+      'id': id,
       'title': title,
       'poster_path': posterPath,
       'overview': overview,

@@ -40,6 +40,7 @@ class MyListServices {
       return querySnapshot.docs.map((doc) {
         final data = doc.data();
         return Movie(
+          id: data['id'] ?? 0,
           title: data['title'] ?? 'Title not found',
           overview: data['overview'] ?? 'Overview not found', // Sera ignoré ici
           posterPath: data['poster_path'] ?? '',

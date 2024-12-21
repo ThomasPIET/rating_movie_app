@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ratingmoviesapp/model/movie_model.dart';
+import 'package:ratingmoviesapp/movie_details/display_casting.dart';
 import 'package:ratingmoviesapp/services/mylist.dart';
 
 import '../services/auth.dart';
@@ -12,6 +13,8 @@ class MovieDetailsScreen extends StatelessWidget {
   final Movie movie;
 
   MovieDetailsScreen({super.key, required this.movie});
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -67,6 +70,8 @@ class MovieDetailsScreen extends StatelessWidget {
                                 'title': movie.title,
                                 'poster_path': movie.posterPath,
                                 'release_date': movie.releaseDate,
+                                'overview': movie.overview,
+                                'vote_average': movie.voteAverage,
                               });
                             },
                             iconSize: 20,
@@ -94,6 +99,7 @@ class MovieDetailsScreen extends StatelessWidget {
                   style: const TextStyle(fontSize: 16),
                 ),
               ),
+              DisplayCasting(movieId: movie.id),
             ],
           ),
         ),
