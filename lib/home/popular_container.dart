@@ -31,7 +31,6 @@ class _PopularContainerState extends State<PopularContainer> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SizedBox(height: 10),
         Row(
           children: [
             const SizedBox(width: 15),

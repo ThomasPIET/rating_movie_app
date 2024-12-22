@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ratingmoviesapp/home/popular_container.dart';
+
 import '../shared/bottom_nav.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -10,7 +11,6 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          // Header
           Container(
             decoration: BoxDecoration(
               color: Theme.of(context).colorScheme.primary,
@@ -26,7 +26,7 @@ class HomeScreen extends StatelessWidget {
                       child: Image.asset('assets/logo.png'),
                     ),
                   ),
-                  const SizedBox(width: 10), // Spacing between logo and text
+                  const SizedBox(width: 10),
                   const Text(
                     'RateFlix',
                     style: TextStyle(
@@ -41,69 +41,40 @@ class HomeScreen extends StatelessWidget {
           ),
           // Body
           Expanded(
-            child: Container(
-              decoration: const BoxDecoration(
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text(
-                    "Discover. Rate. Watch.",
-                    style: TextStyle(
-                      fontSize: 36,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                      shadows: [
-                        Shadow(
-                          offset: Offset(2, 2),
-                          blurRadius: 4,
-                          color: Colors.black45,
-                        ),
-                      ],
-                    ),
-                    textAlign: TextAlign.center,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  "Discover. Watch. Rate.",
+                  style: TextStyle(
+                    fontSize: 36,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
                   ),
-                  const SizedBox(height: 10),
-                  const Text(
-                    "Your movie journey starts here.",
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.white70,
-                    ),
-                    textAlign: TextAlign.center,
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 10),
+                const Text(
+                  "Your movie journey starts here.",
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.white70,
                   ),
-                  const SizedBox(height: 30),
-                  ElevatedButton(
-                    onPressed: () {
-                      // Add navigation or action here
-                    },
-                    style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.deepPurple,
-                      backgroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 30, vertical: 15),
-                    ),
-                    child: const Text(
-                      "Get Started",
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 15),
+                Image.asset(
+                  'assets/man-watching-movie.png',
+                  width: 200,
+                  height: 200,
+                )
+
+              ],
             ),
           ),
-          // Popular Section
-          const SizedBox(height: 10), // Add some spacing
           const PopularContainer(),
         ],
       ),
-      // Bottom Navigation Bar
       bottomNavigationBar: const BottomNavBar(currentIndex: 0),
     );
   }
