@@ -8,5 +8,5 @@ var routes = {
   '/': (context) => const AuthGuard(),
   '/login': (context) => const LoginScreen(),
   '/home': (context) => const HomeScreen(),
-  '/all_popular': (context) => AllPopularScreen(),
+  '/all_popular': (context) => const AllPopularScreen(),
 };

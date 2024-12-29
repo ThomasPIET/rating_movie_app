@@ -3,6 +3,7 @@ import 'package:ratingmoviesapp/model/casting_model.dart';
 import 'package:ratingmoviesapp/services/credits.dart';
 
 class DisplayCasting extends StatefulWidget {
+
   final int movieId;
 
   const DisplayCasting({super.key, required this.movieId});
@@ -31,28 +32,17 @@ class _DisplayCastingState extends State<DisplayCasting> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Row(
+        const Row(
           children: [
-            const SizedBox(width: 23),
-            const Text(
+            SizedBox(width: 23),
+             Text(
               'Casting',
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const Spacer(),
-            TextButton.icon(
-              onPressed: () {
-                Navigator.pushNamed(context, '/all_casting');
-              },
-              label: const Text(
-                'View All',
-                style: TextStyle(color: Colors.white70),
-              ),
-              icon: const Icon(Icons.arrow_forward, color: Colors.white70),
-              iconAlignment: IconAlignment.end,
-            ),
+             Spacer(),
           ],
         ),
         Row(
