@@ -15,7 +15,7 @@ RatingMovieApp est une application mobile permettant aux utilisateurs de recherc
 - **Affichage des films notés :** Les utilisateurs peuvent consulter, trier et explorer les détails des films qu’ils ont notés.
 - **Voir les films les plus populaires :** Une section met en avant les films les plus populaires actuels.
 - **Gestion de liste :** Les utilisateurs peuvent ajouter des films à leur liste personnelle pour les retrouver facilement plus tard.
-- **Authentification Firebase :** Connexion via email/mot de passe ou Google pour un accès personnalisé.
+- **Authentification Firebase :** Connexion anonyme ou via Google pour un accès personnalisé.
 
 ---
 

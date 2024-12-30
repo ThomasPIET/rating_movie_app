@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
       title: 'RateFlix',
       theme: theme,
       routes: routes,
+      debugShowCheckedModeBanner: false,
     );
   }
 }
