@@ -50,6 +50,7 @@ class MovieDetailsScreen extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                         maxLines: 2,
                       ),
+                      const SizedBox(height: 10),
                       Text(
                         movie.releaseDate,
                         style: const TextStyle(
@@ -57,26 +58,36 @@ class MovieDetailsScreen extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Colors.black.withOpacity(0.5),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: IconButton(
-                          icon: const FaIcon(FontAwesomeIcons.plus),
-                          onPressed: () {
-                            MyListServices().addMovieToUser(user!.uid, {
-                              'title': movie.title,
-                              'poster_path': movie.posterPath,
-                              'release_date': movie.releaseDate,
-                              'overview': movie.overview,
-                              'vote_average': movie.voteAverage,
-                            });
-                          },
-                          iconSize: 20,
-                          color: Colors.white,
-                        ),
-                      ),
+                      const SizedBox(height: 10),
+                      Row(
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              color: Colors.black.withOpacity(0.5),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: IconButton(
+                              icon: const FaIcon(FontAwesomeIcons.plus),
+                              onPressed: () {
+                                MyListServices().addMovieToUser(user!.uid, {
+                                  'title': movie.title,
+                                  'poster_path': movie.posterPath,
+                                  'release_date': movie.releaseDate,
+                                  'overview': movie.overview,
+                                  'vote_average': movie.voteAverage,
+                                });
+                              },
+                              iconSize: 20,
+                              color: Colors.white,
+                            ),
+                          ),
+                          const SizedBox(width: 10),
+                          const Text(
+                            "Add to my list ",
+                            style: TextStyle(fontSize: 12),
+                          ),
+                        ],
+                      )
                     ],
                   ),
                 ),
@@ -94,15 +105,15 @@ class MovieDetailsScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                'Rating: ${movie.voteAverage}',
+                'Public rating : ${movie.voteAverage}',
                 style: const TextStyle(fontSize: 16),
               ),
             ),
-            DisplayCasting(movieId: movie.id),
             RatingComponents(
               movieId: movie.id,
               userId: user!.uid,
             ),
+            DisplayCasting(movieId: movie.id),
           ],
         ),
       ),

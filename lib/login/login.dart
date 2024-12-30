@@ -66,7 +66,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               const SizedBox(height: 20),
               const Text(
-                "Connectez-vous pour continuer",
+                "Login to continue",
                 style: TextStyle(fontSize: 16, color: Colors.grey),
                 textAlign: TextAlign.center,
               ),
@@ -84,7 +84,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 child: const Text(
-                  "Connexion Anonyme",
+                  "Login as Guest",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 16,
@@ -110,7 +110,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 24,
                 ),
                 label: const Text(
-                  "Connexion avec Google",
+                  "Login with Google",
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 16,
